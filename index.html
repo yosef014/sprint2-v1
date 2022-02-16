@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Document</title>
+
+</head>
+
+<body onload="init()">
+    <div class="header">Meme Generator</div>
+    <div class="search-container">Search :</div>
+    <div class="main-container">pics</div>
+    <div class="canva-container">
+
+        <canvas class="canvas" height="400" width="400" style="border: 1px solid black;"></canvas>
+        <br>
+        <button class="inc-size" onclick="incFontSize()">+</button>
+        <button class="dec-size" onclick="decFontSize()">-</button>
+        <button class="add-text" onclick="onaddText()">add text</button>
+        <input type="color" id="head" name="head" value="#e66465">
+    </div>
+
+
+
+    <script src="js/util.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+body{
+    margin: 0;
+
+}
+
+.header{
+    display: flex;
+    background-color: #00171f;
+    color: aquamarine;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+}
+.search-container{
+    display: flex;
+    background-color: aquamarine;
+    height: 50px;
+    color: #00171f;
+    justify-content: center;
+    align-items: center;
+
+}
+.main-container{
+display: flex;
+align-items: center;
+justify-content: center;
+width: 100%;
+
+
+}
+
+.canva-container{
+    /* display: none; */
+    margin-top: 20px;
+    text-align: center;
+}

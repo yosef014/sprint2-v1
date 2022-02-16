@@ -49,6 +49,8 @@ function renderCanvas() {
     gCtx.drawImage(gCurrImg, 0, 0, gCanvas.width, gCanvas.height);
     gTexts.forEach(text => { drawText(text.text, text.pos, text.size, text.font) });
     gCtx.restore()
+    drawRect()
+
 }
 
 
@@ -92,13 +94,14 @@ function onMove(ev) {
 }
 
 function onDown(ev) {
+
     var evpPos = { x: ev.offsetX, y: ev.offsetY } //get pos from ev clicked
-    var textLengh = gCtx.measureText(gTexts[0].text).width
     var idxClikedText = gTexts.findIndex(text =>
-        evpPos.x >= text.pos.x && evpPos.x <= text.pos.x + textLengh &&
+        evpPos.x >= text.pos.x && evpPos.x <= text.pos.x + gCtx.measureText(text.text).width &&
         evpPos.y + text.size >= text.pos.y && evpPos.y <= text.pos.y)
     gCurrText = gTexts[idxClikedText]
-
+    renderCanvas()
+    var textLengh = gCtx.measureText(gCurrText.text).width
     if (evpPos.x >= gCurrText.pos.x && evpPos.x <= gCurrText.pos.x + textLengh &&
         evpPos.y + gCurrText.size >= gCurrText.pos.y && evpPos.y <= gCurrText.pos.y) {
         isDrag = true
@@ -107,6 +110,15 @@ function onDown(ev) {
     }
 
 
+}
+function drawRect() {
+    var textLengh = gCtx.measureText(gCurrText.text).width
+    gCtx.beginPath();
+    gCtx.rect(gCurrText.pos.x, gCurrText.pos.y - gCurrText.size, textLengh, gCurrText.size);
+    gCtx.fillStyle = '#ff80004d';
+    gCtx.fillRect(gCurrText.pos.x, gCurrText.pos.y - gCurrText.size, textLengh, gCurrText.size);
+    gCtx.strokeStyle = 'black';
+    gCtx.stroke();
 }
 
 function onUp(ev) {
@@ -141,7 +153,7 @@ function decFontSize() {
 function onaddText() {
     craetTextObj('press to edit text!', { x: 80, y: getRandomInt(30, 350) })
     renderCanvas()
-   
+
 
 }
 
@@ -156,7 +168,7 @@ function drawImg(elImg) {
     };
     document.querySelector('.main-container').style.display = "none";
     document.querySelector('.canva-container').style.display = "block";
-   
+
 }
 
 var gPics = [

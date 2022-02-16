@@ -14,7 +14,11 @@ function init() {
     craetTextObj('press to edit text!', { x: 80, y: 50 })
     craetTextObj('press to edit text!', { x: 80, y: 350 })
     gTexts.forEach(text => { drawText(text.text, text.pos, text.size, text.font) });
+    renderPics()
 }
+
+
+
 
 function craetTextObj(text, pos, size = 30, font = 'Arial') {
     gTexts.push({
@@ -27,11 +31,22 @@ function craetTextObj(text, pos, size = 30, font = 'Arial') {
     })
 }
 
+function renderPics() {
+    var elPicsArea = document.querySelector('.pics')
+    var strHtml = ''
+    var counter = 0
+    gPics.forEach(pic => {
+        strHtml += `<div class="pic pic${++counter}" onclick="drawImg(this)"><img src="${pic.url}"></div>`
+    });
+    elPicsArea.innerHTML = strHtml
+}
+
 function renderCanvas() {
     gCtx.save()
-    gCtx.fillStvyle = "aqua"
+    // gCtx.fillStvyle = "aqua"
     gCtx.fillRect(0, 0, gCanvas.width, gCanvas.height)
     gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height);
+    gCtx.drawImage(gCurrImg, 0, 0, gCanvas.width, gCanvas.height);
     gTexts.forEach(text => { drawText(text.text, text.pos, text.size, text.font) });
     gCtx.restore()
 }
@@ -129,3 +144,45 @@ function onaddText() {
    
 
 }
+
+function drawImg(elImg) {
+    elImg.querySelector('img').src
+    var img = new Image();
+    img.src = elImg.querySelector('img').src;
+    gCurrImg = img
+    img.onload = () => {
+        gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height);
+        renderCanvas()
+    };
+    document.querySelector('.main-container').style.display = "none";
+    document.querySelector('.canva-container').style.display = "block";
+   
+}
+
+var gPics = [
+    { id: 1, url: 'img/1.jpg', keywords: ['happy', 'mountain', 'blond'] },
+    { id: 2, url: 'img/2.jpg', keywords: ['trump', 'politics', 'usa'] },
+    { id: 3, url: 'img/3.jpg', keywords: ['animals', 'dogs', 'cute'] },
+    { id: 4, url: 'img/4.jpg', keywords: ['baby', 'funny', 'succes'] },
+    { id: 5, url: 'img/5.jpg', keywords: ['baby', 'dogs', 'funny'] },
+    { id: 6, url: 'img/6.jpg', keywords: ['animals', 'cat'] },
+    { id: 7, url: 'img/7.jpg', keywords: ['happy', 'hat'] },
+    { id: 8, url: 'img/8.jpg', keywords: ['funny', 'baby'] },
+    { id: 9, url: 'img/9.jpg', keywords: ['tv'] },
+    { id: 10, url: 'img/10.jpg', keywords: ['tv'] },
+    { id: 11, url: 'img/11.jpg', keywords: ['tv'] },
+    { id: 12, url: 'img/12.jpg', keywords: ['movies'] },
+    { id: 13, url: 'img/13.jpg', keywords: ['succes', 'funny', 'baby'] },
+    // { id: 14, url: 'img/14.jpg', keywords: ['trump', 'politics', 'usa'] },
+    // { id: 15, url: 'img/15.jpg', keywords: ['happy', 'baby'] },
+    // { id: 16, url: 'img/16.jpg', keywords: ['funny', 'animals', 'dogs'] },
+    // { id: 17, url: 'img/17.jpg', keywords: ['obama', 'politics', 'usa'] },
+    // { id: 18, url: 'img/18.jpg', keywords: ['sport', 'kiss'] },
+    // { id: 19, url: 'img/19.jpg', keywords: ['movies', 'wine'] },
+    // { id: 20, url: 'img/20.jpg', keywords: ['matrix', 'movies'] },
+    // { id: 21, url: 'img/21.jpg', keywords: ['tv'] },
+    // { id: 22, url: 'img/22.jpg', keywords: ['tv', 'funny'] },
+    // { id: 23, url: 'img/23.jpg', keywords: ['movies', 'xman'] },
+    // { id: 24, url: 'img/24.jpg', keywords: ['politics', 'russia', 'putin'] },
+    // { id: 25, url: 'img/25.jpg', keywords: ['movies', 'animation', 'toy story'] }
+];

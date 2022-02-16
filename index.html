@@ -11,47 +11,79 @@
 </head>
 
 <body onload="init()">
-    <div class="header">Meme Generator</div>
+    <header>
+        <div class="header">
+
+            <div class="logo"> Meme Generator.</div>
+            <div class="nav">
+                <ul class="nav-bar">
+                    <li><a href="#">About</a></li>
+                    |
+                    <li><a href="#">galery</a></li>
+                </ul>
+
+            </div>
+        </div>
+    </header>
     <div class="search-container">Search :</div>
     <div class="main-container">
         <div class="pics">
-            <div class="pic pic1"><img src=""></div>
-            <div class="pic pic2"><img src="https://stavdorkam119.github.io/Sprint-2-Meme-Generator/imgs/4.jpg"></div>
-            <div class="pic pic3"><img src="https://stavdorkam119.github.io/Sprint-2-Meme-Generator/imgs/4.jpg"></div>
-            <div class="pic pic4"><img src="https://stavdorkam119.github.io/Sprint-2-Meme-Generator/imgs/4.jpg"></div>
-            <div class="pic pic5"><img src="https://stavdorkam119.github.io/Sprint-2-Meme-Generator/imgs/4.jpg"></div>
-            <div class="pic pic6"><img src="https://stavdorkam119.github.io/Sprint-2-Meme-Generator/imgs/4.jpg"></div>
-            <div class="pic pic7"><img src="https://stavdorkam119.github.io/Sprint-2-Meme-Generator/imgs/4.jpg"></div>
-            <div class="pic pic8"><img src="https://stavdorkam119.github.io/Sprint-2-Meme-Generator/imgs/4.jpg"></div>
-            <div class="pic pic9"><img src="https://stavdorkam119.github.io/Sprint-2-Meme-Generator/imgs/4.jpg"></div>
-            <div class="pic pic10"><img src="https://stavdorkam119.github.io/Sprint-2-Meme-Generator/imgs/4.jpg"></div>
-            <div class="pic pic11"><img src="https://stavdorkam119.github.io/Sprint-2-Meme-Generator/imgs/4.jpg"></div>
-            <div class="pic pic12"><img src="https://stavdorkam119.github.io/Sprint-2-Meme-Generator/imgs/4.jpg"></div>
-            <div class="pic pic13"><img src="https://stavdorkam119.github.io/Sprint-2-Meme-Generator/imgs/4.jpg"></div>
+            <!-- pics render here -->
+        </div>
+    </div>
 
+
+    <div class="meme-generator">
+
+        <div class="canva-container">
+            <canvas class="canvas" height="500" width="500" style="border: 1px solid black;"></canvas>
+            <br>
+        </div>
+
+
+
+        <div class="cntrl-panel">
+            <!-- <img src="/icons/github-logo.png" alt="" class="git-img" /> -->
+            <!-- <button class="inc-size" onclick="incFontSize()">+</button> -->
+            <img src="icons/increase.png" alt="" class="inc-size" onclick="incFontSize()" />
+            <img src="icons/decrease.png" alt="" class="dec-size" onclick="decFontSize()" />
+            <!-- <button class="dec-size" onclick="decFontSize()">-</button> -->
+            <img src="icons/add.png" alt="" class="add-text" onclick="onaddText()" />
+            <!-- <button class="add-text" onclick="onaddText()">add text</button> -->
+            <img src="icons/up-and-down-opposite-double-arrows-side-by-side.png" alt="" class="change-text"
+                onclick="onChangeText()" />
+            <!-- <button class="change-text" onclick="onChangeText()">chancge</button> -->
+            <img src="icons/trash.png" alt="" class="delete-text" onclick="onDeleteText()" />
+            <!-- <button class="delete-text" onclick="onDeleteText()">del</button> -->
+            <img src="icons/paint-board-and-brush.png" alt="" class="clore-inp"
+                onclick="InputColorChange(this.value)()" />
+            <!-- <button>  🚚<input class="clore-inp" type="color" id="head" name="head" value="#000000" onchange="InputColorChange(this.value)"></button> -->
+            <button class="share-bt" onclick="onaddText()">share</button>
+            <select name="fonts" id="fonts" class="fonts-selction">
+                <option value="volvo">Volvo</option>
+                <option value="saab">Saab</option>
+                <option value="mercedes">Mercedes</option>
+                <option value="audi">Audi</option>
+            </select>
+            <div class="stickers">
+                <button>
+                    <</button>
+                        <div class="sticker" onclick="onStickerClicked(this)">🎁</div>
+                        <div class="sticker" onclick="onStickerClicked(this)">🎀</div>
+                        <div class="sticker" onclick="onStickerClicked(this)">👑</div>
+                        <div class="sticker" onclick="onStickerClicked(this)">🌈</div>
+                        <button>></button>
+
+            </div>
 
         </div>
 
     </div>
 
-    
-
-
-
-
-    <div class="canva-container">
-
-        <canvas class="canvas" height="400" width="400" style="border: 1px solid black;"></canvas>
-        <br>
-        <button class="inc-size" onclick="incFontSize()">+</button>
-        <button class="dec-size" onclick="decFontSize()">-</button>
-        <button class="add-text" onclick="onaddText()">add text</button>
-        <input type="color" id="head" name="head" value="#e66465">
-    </div>
-
 
 
     <script src="js/util.js"></script>
+    <script src="js/main-service.js"></script>
     <script src="js/main.js"></script>
 </body>
 

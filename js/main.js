@@ -96,7 +96,7 @@ function onNextStickerClick(elNext) {
 }
 function onMove(ev) {
     if (isDrag) {
-        var evpPos = { x: ev.offsetX, y: ev.offsetY }
+        var evpPos =getEvPos(ev)
         const dx = evpPos.x - gStartPos.x
         const dy = evpPos.y - gStartPos.y
         gCurrText.pos.x += dx
@@ -107,7 +107,7 @@ function onMove(ev) {
 }
 
 function onDown(ev) {
-    var evpPos = { x: ev.offsetX, y: ev.offsetY } //get pos from ev clicked
+    var evpPos = getEvPos(ev)
     var idxClikedText = gTexts.findIndex(text =>
         evpPos.x >= text.pos.x && evpPos.x <= text.pos.x + gCtx.measureText(text.text).width &&
         evpPos.y + text.size >= text.pos.y && evpPos.y <= text.pos.y)

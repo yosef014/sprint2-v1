@@ -18,9 +18,9 @@
             <div class="nav">
 
                 <ul class="nav-bar">
-                    <li><a href="#">About</a></li>
+                    <li><a href="#about">About</a></li>
 
-                    <li><a href="#">galery</a></li>
+                    <li><a href="#galery">galery</a></li>
                 </ul>
             </div>
             <button class="hamburger" onclick="openMenu(this)">☰</button>
@@ -35,7 +35,7 @@
     </div>
 
 
-    <div class="meme-generator">
+    <div class="meme-generator" id="galery">
 
         <div class="canva-container">
             <canvas class="canvas" height="500" width="500" style="border: 1px solid black;"></canvas>
@@ -45,39 +45,54 @@
 
 
         <div class="cntrl-panel">
-            
+
             <img src="icons/increase.png" alt="" class="inc-size" onclick="incFontSize()" />
             <img src="icons/decrease.png" alt="" class="dec-size" onclick="decFontSize()" />
             <img src="icons/add.png" alt="" class="add-text" onclick="onaddText()" />
             <img src="icons/up-and-down-opposite-double-arrows-side-by-side.png" alt="" class="change-text"
                 onclick="onChangeText()" />
             <img src="icons/trash.png" alt="" class="delete-text" onclick="onDeleteText()" />
-            <input class="clore-inpdd" type="color" id="color-input" value="#000000" onchange="InputColorChange(this.value)">
-            <label for="color-input" class="clore-inp" >
-                <img src="icons/paint-board-and-brush.png" alt=""  onclick="InputColorChange(this.value)()" />
+            <input class="clore-inpdd" type="color" id="color-input" value="#000000"
+                onchange="InputColorChange(this.value)">
+            <label for="color-input" class="clore-inp">
+                <img src="icons/paint-board-and-brush.png" alt="" onclick="InputColorChange(this.value)()" />
             </label>
             <button class="share-bt" onclick="uploadImg()">share</button>
-
             <select name="fonts" id="fonts" class="fonts-selction" onchange="onSelectFont(this.value)">
                 <option value="cursive">cursive</option>
                 <option value="fantasy">fantasy</option>
                 <option value="monospace">monospace</option>
                 <option value="sans-serif">sans-serif</option>
             </select>
+            <button class="return-bt" onclick="onReturnClicked()">↩ return</button>
             <div class="stickers">
 
-                     <!-- stickers  render  here-->
-                    
+                <!-- stickers  render  here-->
+
             </div>
             <button class="download-bt">
-                <a href="#" onclick="downloadCanvas(this)" download="mymeme" >download</a>
-            </button> 
-            <input class="file-input" type="file" id="file"  name="image" accept="image/*" onchange="onImgInput(event)" />
+                <a href="#" onclick="downloadCanvas(this)" download="mymeme">download</a>
+            </button>
+            <input class="file-input" type="file" id="file" name="image" accept="image/*"
+                onchange="onImgInput(event)" />
             <label for="file" class="file-input-label">Uploud image</label>
         </div>
 
     </div>
-    <div class="about"></div>
+    <div class="about" id="about">
+        <div class="about-container">
+            <div class="aside">
+                <img src="img/me.jpg" alt="" srcset="">
+            </div>
+            <div class="information-on-me">
+                <h3>yosef plishtiiv</h3>
+                <p>hii welcome to MEME GENRATOR. this project use: javaScript, html5 canvas, css grid.
+                </p>
+                <p>for more information:
+                    <br> call 052-8302775</p>
+            </div>
+        </div>
+    </div>
     <div class="footer">
         <div class="logo"> Meme Generator.</div>
         yosef plishtiiv

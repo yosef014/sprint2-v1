@@ -174,6 +174,10 @@ function onStickerClicked(elSticker) {
     craetTextObj(elSticker.innerText, { x: 80, y: getRandomInt(30, 350) })
     renderCanvas()
 }
+function onReturnClicked(){
+    document.querySelector('.main-container').style.display = "flex";
+    document.querySelector('.meme-generator').style.display = "none";
+}
 
 
 // do upload
@@ -240,6 +244,7 @@ function renderImg(img) {
 // end uplosf
 
 function drawImg(elImg) {
+    document.querySelector('.about').style.display='none'
     elImg.querySelector('img').src
     var img = new Image();
     img.src = elImg.querySelector('img').src;

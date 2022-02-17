@@ -5,7 +5,12 @@
 body{
     margin: 0;
 
-}header{
+}
+h3{
+    color: #ff7f00;
+}
+
+header{
     background-color: #ff7f00;
 
 }
@@ -67,8 +72,8 @@ width: 100%;
    "  .          .        .         .             ."
    "stickers  stickers  stickers  stickers  stickers"
    "  .          .        .         .             ."
-   "download-bt     download-bt     share     share        share"
-   "file-input     file-input     .     .        ."
+   "download-bt     download-bt     download-bt     share        share"
+   "file-input     file-input     return-bt   return-bt        return-bt"
 
 
    ;
@@ -228,18 +233,39 @@ width: 100%;
     font-size: 14px;
 
 }
+.return-bt{
+    grid-area: return-bt;
+    background-color: #ff8000b2;
+    border: 2px solid #f70b0b;
+    border-radius: 20px 20px 20px 20px;
+    color: #fdfdfd;
+    font-family: cursive;
+    font-size: 15px;
 
+}
 
 .canva-container{
     margin-top: 20px;
     text-align: center;
 }
-.about{
-    height: 300px;
-    width: 100vw;
-    background-color: #e3e3e3;
+.about-container{
+    display: flex;
+    gap: 20px;
 }
-
+.aside{
+}
+.aside img{
+  height: 250px;
+  width: 190px;
+  border: 5px solid #ffffff;
+  border-radius:50%;
+  
+  
+}
+.information-on-me{
+    max-width: 300px;
+    font-family: cursive;
+}
 .footer{
     text-align: center;
     color: white;

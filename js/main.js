@@ -18,7 +18,7 @@ function init() {
     _firstRender()
     renderPics()
     renderStickers()
-    resizeCanvas()
+    resizeCanvasOnInit()
 }
 
 function _firstRender() {
@@ -289,8 +289,14 @@ function openMenu(hamburger) {
 }
 function resizeCanvas() {
     var elContainer = document.querySelector('.canva-container')
+    if (window.innerWidth > 500) return
+    gCanvas.width = elContainer.offsetWidth - 20
+
+}
+function resizeCanvasOnInit() {
+    var elContainer = document.querySelector('.canva-container')
     if (window.innerWidth < 500) {
-        gCanvas.width = elContainer.offsetWidth + window.innerWidth -50
+        gCanvas.width = elContainer.offsetWidth + window.innerWidth - 50
     }
 }
 

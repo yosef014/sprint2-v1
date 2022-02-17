@@ -45,6 +45,7 @@ display: flex;
 align-items: center;
 justify-content: center;
 width: 100%;
+transition-duration: 500ms;
 
 }
 .pic{
@@ -83,10 +84,10 @@ width: 100%;
     display: none;
     justify-content: center;
     gap: 30px;
-    background-color: #e3e3e3;
-    
+    background-color: #e3e3e3; 
 }
 .meme-generator .cntrl-panel{
+    
     display: grid;
     max-height: 500px;
     /* gap: 20px; */
@@ -108,24 +109,7 @@ width: 100%;
    ;
 }
 
-/* button{
-    display: inline-block;
-    text-align: center;
-    vertical-align: middle;
-    padding: 12px 4px;
-    border: 1px solid #b35a00;
-    border-radius: 4px;
-    background: #ff9300;
-    background: -moz-linear-gradient(top, #ff9300, #b35a00);
-    background: linear-gradient(to bottom, #ff9300, #b35a00);
-    -webkit-box-shadow: #ff9a00 0px 0px 40px 0px;
-    -moz-box-shadow: #ff9a00 0px 0px 40px 0px;
-    box-shadow: #ff9a00 0px 0px 40px 0px;
-    text-shadow: #804000 1px 1px 1px;
-    font: normal normal bold 20px arial;
-    color: #ffffff;
-    text-decoration: none;
-} */
+
 .inc-size{
     grid-area: inc-bt;
     max-height: 100%;

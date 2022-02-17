@@ -16,6 +16,7 @@ function init() {
     craetTextObj('press to edit text!', { x: 60, y: 50 })
     craetTextObj('press to edit text!', { x: 60, y: 480 })
     _firstRender()
+    console.log(gPics);
     renderPics()
     renderStickers()
     // resizeCanvas() 
@@ -27,6 +28,7 @@ function _firstRender() {
 
 function renderPics() {
     gPics = getPicsForDisplay()
+    console.log(gPics);
     var elPicsArea = document.querySelector('.pics')
     var strHtml = ''
     var counter = 0
@@ -34,6 +36,8 @@ function renderPics() {
         strHtml += `<div class="pic pic${++counter}" onclick="drawImg(this)"><img src="${pic.url}"></div>`
     });
     elPicsArea.innerHTML = strHtml
+    _FillgPics()
+    console.log(gPics);
 }
 function renderStickers() {
     var elStickers = document.querySelector('.stickers')
@@ -43,7 +47,8 @@ function renderStickers() {
     }
     strHtml += '<button onclick="onNextStickerClick(this)"> > </button>'
     elStickers.innerHTML = strHtml
-    _firstRender
+  
+
 }
 
 function renderCanvas() {
@@ -180,6 +185,13 @@ function onStickerClicked(elSticker) {
 function onReturnClicked() {
     document.querySelector('.main-container').style.display = "flex";
     document.querySelector('.meme-generator').style.display = "none";
+    document.querySelector('.search-container').style.display = "flex";
+    document.querySelector('.flexible').style.display = "block";
+    document.querySelector('.pages').style.display = "flex";
+    document.querySelector('.about').style.display = 'flex'
+    
+    // document.querySelector('.main-container').style.display = "flex";
+    // document.querySelector('.meme-generator').style.display = "none";
 }
 
 
@@ -247,7 +259,7 @@ function renderImg(img) {
 // end uplosd
 
 function drawImg(elImg) {
-    document.querySelector('.about').style.display = 'none'
+    
     console.log(elImg.querySelector('img').src);
     var img = new Image();
     img.src = elImg.querySelector('img').src;
@@ -258,6 +270,10 @@ function drawImg(elImg) {
     };
     document.querySelector('.main-container').style.display = "none";
     document.querySelector('.meme-generator').style.display = "flex";
+    document.querySelector('.search-container').style.display = "none";
+    document.querySelector('.flexible').style.display = "none";
+    document.querySelector('.pages').style.display = "none";
+    document.querySelector('.about').style.display = 'none'
 
 }
 function openMenu(hamburger) {

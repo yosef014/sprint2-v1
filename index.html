@@ -27,14 +27,30 @@
 
         </div>
     </header>
-    <div class="search-container">Search :</div>
+    <div class="search-container"><span>filter:</span>
+        <label class="keywords" onclick="onFilterkeyword(this)">happy</label>
+        <label class="keywords" onclick="onFilterkeyword(this)">tv</label>
+        <label class="keywords" onclick="onFilterkeyword(this)">funny</label>
+        <label class="keywords" onclick="onFilterkeyword(this)">All</label>
+    </div>
     <div class="main-container">
         <div class="pics">
             <!-- pics render here -->
         </div>
+
     </div>
 
+    <div class="flexible">
+        <button onclick="onflexivleClick()">i`m flexible</button>
 
+    </div>
+    
+    <div class="pages" style="direction: ltr">
+        <button class="prev-page" onclick="onSetPage( 'prev') ">&#8592;</button>
+        <div class="page-numbers"></div>
+        <button class="next-page " onclick="onSetPage( 'next') ">&#8594;</button>
+    </div>
+    
     <div class="meme-generator" id="galery">
 
         <div class="canva-container">
@@ -89,7 +105,8 @@
                 <p>hii welcome to MEME GENRATOR. this project use: javaScript, html5 canvas, css grid.
                 </p>
                 <p>for more information:
-                    <br> call 052-8302775</p>
+                    <br> call 052-8302775
+                </p>
             </div>
         </div>
     </div>
@@ -100,6 +117,7 @@
 
 
     <script src="js/util.js"></script>
+    <script src="js/meme-sentence.js"></script>
     <script src="js/main-service.js"></script>
     <script src="js/main.js"></script>
 </body>

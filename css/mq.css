@@ -149,7 +149,8 @@
     }
     .meme-generator .cntrl-panel{
         width: 500px;
-        margin: 0 auto;       
+        margin: 0 auto; 
+        height: 500px;      
  
     }
 

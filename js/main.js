@@ -18,6 +18,7 @@ function init() {
     _firstRender()
     renderPics()
     renderStickers()
+    // resizeCanvas() 
 }
 
 function _firstRender() {
@@ -25,6 +26,7 @@ function _firstRender() {
 }
 
 function renderPics() {
+    gPics = getPicsForDisplay()
     var elPicsArea = document.querySelector('.pics')
     var strHtml = ''
     var counter = 0
@@ -41,6 +43,7 @@ function renderStickers() {
     }
     strHtml += '<button onclick="onNextStickerClick(this)"> > </button>'
     elStickers.innerHTML = strHtml
+    _firstRender
 }
 
 function renderCanvas() {
@@ -174,7 +177,7 @@ function onStickerClicked(elSticker) {
     craetTextObj(elSticker.innerText, { x: 80, y: getRandomInt(30, 350) })
     renderCanvas()
 }
-function onReturnClicked(){
+function onReturnClicked() {
     document.querySelector('.main-container').style.display = "flex";
     document.querySelector('.meme-generator').style.display = "none";
 }
@@ -241,11 +244,11 @@ function renderImg(img) {
 
 }
 
-// end uplosf
+// end uplosd
 
 function drawImg(elImg) {
-    document.querySelector('.about').style.display='none'
-    elImg.querySelector('img').src
+    document.querySelector('.about').style.display = 'none'
+    console.log(elImg.querySelector('img').src);
     var img = new Image();
     img.src = elImg.querySelector('img').src;
     gCurrImg = img
@@ -271,3 +274,92 @@ function openMenu(hamburger) {
     isNabOpen = !isNabOpen
 
 }
+function resizeCanvas() {
+    var elContainer = document.querySelector('.canva-container')
+    gCanvas.width = elContainer.offsetWidth - 20
+}
+
+function onflexivleClick() {
+    document.querySelector('.about').style.display = 'none'
+    document.querySelector('.footer').style.display = 'none'
+    console.log(gMemesSentences[0]);
+    gTexts.forEach(text => {
+        text.text = gMemesSentences[getRandomInt(1, gMemesSentences.length - 1)]
+    });
+    var elImg = gPics[getRandomInt(1, gPics.length - 1)].url
+    var img = new Image();
+    img.src = elImg
+    gCurrImg = img
+    img.onload = () => {
+        gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height);
+
+        renderCanvas()
+    };
+    document.querySelector('.main-container').style.display = "none";
+    document.querySelector('.flexible').style.display = "none";
+    document.querySelector('.meme-generator').style.display = "flex";
+}
+
+function onFilterkeyword(elKeyword) {
+    _FillgPics()
+    if (elKeyword.innerText == 'All') {
+        renderPics()
+        return
+    }
+    var newPics = gPics.filter(pic => pic.keyword == elKeyword.innerText)
+    gPics = newPics
+    renderPics()
+}
+
+
+function renderPageBtns() {
+    var strHTMLs = setPageBtnsHTMLs();
+    var elNextBtn = document.querySelector('.next-page');
+    var elPrevBtn = document.querySelector('.prev-page');
+
+    document.querySelector('.page-numbers').innerHTML = strHTMLs
+    var elCurrPageBtn = document.querySelector(`.page-${gPageIdx}`)
+    // elCurrPageBtn.classList.add('btn-lg')
+}
+function setPageBtnsHTMLs() {
+    var strHTMLs = ''
+    for (var i = 0; i < gPageCount; i++) {
+        var buttonSize = (i === gPageIdx) ? 'btn-lg' : 'btn-sm'
+        strHTMLs += `<button class="page-${i} ${buttonSize} btn-primary m-2" onclick="onSetPage(${i})">${(i + 1)}</button>`
+    }
+    return strHTMLs
+}
+var gPageCount = 0
+var gPageIdx = 0
+const PAGE_SIZE = 13
+
+
+
+function onSetPage(targetPage) {
+    setPage(targetPage);
+
+    renderPics();
+}
+function setPage(target) {
+    if (target === 'prev') {
+        if (gPageIdx === 0) return;
+        gPageIdx--;
+    } else if (target === 'next') {
+        if (gPageIdx === gPageCount - 1) return;
+        gPageIdx++;
+    } else {
+        gPageIdx = target;
+    }
+}
+
+ function getPicsForDisplay() {
+    const startIdx = gPageIdx * PAGE_SIZE;
+    gPageCount = getPageCount();
+    return gPics.slice(startIdx, startIdx + PAGE_SIZE);
+}
+
+function getPageCount() {
+    var pageCount = Math.ceil(gPics.length / PAGE_SIZE)
+    return pageCount;
+}
+

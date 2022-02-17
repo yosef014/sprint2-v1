@@ -1,39 +1,39 @@
-var gPics =[]
+var gPics = []
 _FillgPics()
 const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
 
-function _FillgPics(){
-gPics = [
-    { id: 1, url: 'img/1.jpg', keyword: 'happy'},
-    { id: 2, url: 'img/2.jpg', keyword: 'tv' },
-    { id: 3, url: 'img/3.jpg', keyword: 'tv' },
-    { id: 4, url: 'img/4.jpg', keyword: 'funny' },
-    { id: 5, url: 'img/5.jpg', keyword: 'funny' },
-    { id: 6, url: 'img/6.jpg', keyword: 'funny' },
-    { id: 7, url: 'img/7.jpg', keyword: 'happy' },
-    { id: 8, url: 'img/8.jpg', keyword: 'funny' },
-    { id: 9, url: 'img/9.jpg', keyword: 'tv' },
-    { id: 10, url: 'img/10.jpg', keyword: 'tv' },
-    { id: 11, url: 'img/11.jpg', keyword: 'tv' },
-    { id: 12, url: 'img/12.jpg', keyword: 'happy' },
-    { id: 13, url: 'img/13.jpg', keyword: 'happy' },
-    { id: 14, url: 'img/14.jpg', keywords: 'happy' },
-    { id: 15, url: 'img/15.jpg', keywords: 'happy' },
-    { id: 16, url: 'img/16.jpg', keywords: 'happy' },
-    { id: 17, url: 'img/17.jpg', keywords: 'happy' },
-    { id: 18, url: 'img/18.jpg', keywords: 'happy' },
-    // { id: 19, url: 'img/19.jpg', keywords: ['movies', 'wine'] },
-    // { id: 20, url: 'img/20.jpg', keywords: ['matrix', 'movies'] },
-    // { id: 21, url: 'img/21.jpg', keywords: ['tv'] },
-    // { id: 22, url: 'img/22.jpg', keywords: ['tv', 'funny'] },
-    // { id: 23, url: 'img/23.jpg', keywords: ['movies', 'xman'] },
-    // { id: 24, url: 'img/24.jpg', keywords: ['politics', 'russia', 'putin'] },
-    // { id: 25, url: 'img/25.jpg', keywords: ['movies', 'animation', 'toy story'] }
-];
+function _FillgPics() {
+    gPics = [
+        { id: 1, url: 'img/1.jpg', keyword: 'happy' },
+        { id: 2, url: 'img/2.jpg', keyword: 'tv' },
+        { id: 3, url: 'img/3.jpg', keyword: 'tv' },
+        { id: 4, url: 'img/4.jpg', keyword: 'funny' },
+        { id: 5, url: 'img/5.jpg', keyword: 'funny' },
+        { id: 6, url: 'img/6.jpg', keyword: 'funny' },
+        { id: 7, url: 'img/7.jpg', keyword: 'happy' },
+        { id: 8, url: 'img/8.jpg', keyword: 'funny' },
+        { id: 9, url: 'img/9.jpg', keyword: 'tv' },
+        { id: 10, url: 'img/10.jpg', keyword: 'tv' },
+        { id: 11, url: 'img/11.jpg', keyword: 'tv' },
+        { id: 12, url: 'img/12.jpg', keyword: 'happy' },
+        { id: 13, url: 'img/13.jpg', keyword: 'happy' },
+        { id: 14, url: 'img/14.jpg', keywords: 'happy' },
+        { id: 15, url: 'img/15.jpg', keywords: 'happy' },
+        { id: 16, url: 'img/16.jpg', keywords: 'happy' },
+        { id: 17, url: 'img/17.jpg', keywords: 'happy' },
+        { id: 18, url: 'img/18.jpg', keywords: 'happy' },
+        // { id: 19, url: 'img/19.jpg', keywords: ['movies', 'wine'] },
+        // { id: 20, url: 'img/20.jpg', keywords: ['matrix', 'movies'] },
+        // { id: 21, url: 'img/21.jpg', keywords: ['tv'] },
+        // { id: 22, url: 'img/22.jpg', keywords: ['tv', 'funny'] },
+        // { id: 23, url: 'img/23.jpg', keywords: ['movies', 'xman'] },
+        // { id: 24, url: 'img/24.jpg', keywords: ['politics', 'russia', 'putin'] },
+        // { id: 25, url: 'img/25.jpg', keywords: ['movies', 'animation', 'toy story'] }
+    ];
 }
-var gStickers =['🌈','👑','🎁','❤','🚩','💣','💋','✨','🐱‍👓','🤢','👏','🌹']
-var gStartSticker =0
-var gEndSticker =3
+var gStickers = ['🌈', '👑', '🎁', '❤', '🚩', '💣', '💋', '✨', '🐱‍👓', '🤢', '👏', '🌹']
+var gStartSticker = 0
+var gEndSticker = 3
 
 function craetTextObj(text, pos, size = 50, font = 'Arial') {
     gTexts.push({
@@ -49,6 +49,10 @@ function craetTextObj(text, pos, size = 50, font = 'Arial') {
 function addListeners() {
     addMouseListeners()
     addTouchListeners()
+    window.addEventListener('resize', () => {
+        resizeCanvas()
+        renderCanvas()
+    })
 }
 function addMouseListeners() {
     gCanvas.addEventListener('mousemove', onMove)
@@ -64,10 +68,30 @@ function addTouchListeners() {
 }
 
 function keyType(ev) {
-    if (ev.key === 'Backspace') {
-        gCurrText.text = gCurrText.text.substring(0, gCurrText.text.length - 1)
+    console.log(ev.key);
+    switch (ev.key) {
+        case 'Backspace':
+            gCurrText.text = gCurrText.text.substring(0, gCurrText.text.length - 1)
+            break;
+        case 'ArrowRight':
+            gCurrText.pos.x++
+            break;
+        case 'ArrowLeft':
+            gCurrText.pos.x--
+            break;
+        case 'ArrowUp':
+            gCurrText.pos.y--
+            break;
+        case 'ArrowDown':
+            gCurrText.pos.y++
+            break;
+        case 'Delete':
+            onDeleteText()
+            break;
+        default:
+            gCurrText.text += ev.key
     }
-    else { gCurrText.text += ev.key }
+
     renderCanvas()
 
 

@@ -16,10 +16,9 @@ function init() {
     craetTextObj('press to edit text!', { x: 60, y: 50 })
     craetTextObj('press to edit text!', { x: 60, y: 480 })
     _firstRender()
-    console.log(gPics);
     renderPics()
     renderStickers()
-    // resizeCanvas() 
+    resizeCanvas()
 }
 
 function _firstRender() {
@@ -28,7 +27,6 @@ function _firstRender() {
 
 function renderPics() {
     gPics = getPicsForDisplay()
-    console.log(gPics);
     var elPicsArea = document.querySelector('.pics')
     var strHtml = ''
     var counter = 0
@@ -37,7 +35,6 @@ function renderPics() {
     });
     elPicsArea.innerHTML = strHtml
     _FillgPics()
-    console.log(gPics);
 }
 function renderStickers() {
     var elStickers = document.querySelector('.stickers')
@@ -47,7 +44,7 @@ function renderStickers() {
     }
     strHtml += '<button onclick="onNextStickerClick(this)"> > </button>'
     elStickers.innerHTML = strHtml
-  
+
 
 }
 
@@ -96,7 +93,7 @@ function onNextStickerClick(elNext) {
 }
 function onMove(ev) {
     if (isDrag) {
-        var evpPos =getEvPos(ev)
+        var evpPos = getEvPos(ev)
         const dx = evpPos.x - gStartPos.x
         const dy = evpPos.y - gStartPos.y
         gCurrText.pos.x += dx
@@ -189,7 +186,7 @@ function onReturnClicked() {
     document.querySelector('.flexible').style.display = "block";
     document.querySelector('.pages').style.display = "flex";
     document.querySelector('.about').style.display = 'flex'
-    
+
     // document.querySelector('.main-container').style.display = "flex";
     // document.querySelector('.meme-generator').style.display = "none";
 }
@@ -259,7 +256,7 @@ function renderImg(img) {
 // end uplosd
 
 function drawImg(elImg) {
-    
+
     console.log(elImg.querySelector('img').src);
     var img = new Image();
     img.src = elImg.querySelector('img').src;
@@ -292,7 +289,9 @@ function openMenu(hamburger) {
 }
 function resizeCanvas() {
     var elContainer = document.querySelector('.canva-container')
-    gCanvas.width = elContainer.offsetWidth - 20
+    if (window.innerWidth < 500) {
+        gCanvas.width = elContainer.offsetWidth + window.innerWidth -50
+    }
 }
 
 function onflexivleClick() {
@@ -368,7 +367,7 @@ function setPage(target) {
     }
 }
 
- function getPicsForDisplay() {
+function getPicsForDisplay() {
     const startIdx = gPageIdx * PAGE_SIZE;
     gPageCount = getPageCount();
     return gPics.slice(startIdx, startIdx + PAGE_SIZE);

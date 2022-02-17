@@ -26,6 +26,10 @@ var gPics = [
     // { id: 25, url: 'img/25.jpg', keywords: ['movies', 'animation', 'toy story'] }
 ];
 
+var gStickers =['🌈','👑','🎁','❤','🚩','💣','💋','✨','🐱‍👓','🤢','👏','🌹']
+var gStartSticker =0
+var gEndSticker =3
+
 function craetTextObj(text, pos, size = 50, font = 'Arial') {
     gTexts.push({
 

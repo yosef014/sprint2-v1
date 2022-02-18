@@ -1,7 +1,4 @@
 
-@import 'mq.css';
-@import 'input-comp.css';
-
 body{
     margin: 0;
 
@@ -14,6 +11,101 @@ header{
     background-color: #ff7f00;
 
 }
+.header{
+    display: flex;
+    color: white;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    max-width: 900px;
+    margin: 0 auto;
+   
+}
+.nav .nav-bar{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    
+}
+.nav-bar  li a{
+    text-decoration: none;
+    color: #020202;
+    font-family: cursive; 
+    color: white;
+}
+.nav .nav-bar>*{
+    font-size: 1.5rem;
+    display: inline-block;
+      
+}
+.nav-bar  li:last-child{
+    border-left: 5px solid #ffffff; 
+    padding-left: 15px;       
+}
+.hamburger{
+    display: none;    
+
+ }
+
+ .pics{
+     margin-top: 30px;
+     display: grid;
+     grid-template-columns: repeat(10, 90px);
+     grid-template-rows:  repeat(4, 155px)   ; 
+ }
+ .pics .pic1{
+ grid-column: 2 / 4 ;
+ grid-row: 1/ 3 ;
+ 
+ }
+ .pics .pic2{
+     grid-column: 4 /span 2 ;
+     grid-row: 1/ span 2 ;
+ }
+ .pics .pic3{
+     grid-column: 6 /span 2 ;
+     grid-row: 1/ span 2 ;
+ }
+ .pics .pic4{
+     grid-column: 8 /span 2 ;
+     grid-row: 1/ span 2 ;
+ }
+ .pics .pic5{
+     grid-column: 1 /span 2 ;
+     grid-row: 2/ span 3 ;
+ }
+ .pics .pic6{
+     grid-column: 3 /span 2 ;
+     grid-row: 2/ span 3 ;
+ }
+ .pics .pic7{
+     grid-column: 5 /span 2 ;
+     grid-row: 2/ span 3 ;
+ }
+ .pics .pic8{
+     grid-column: 7 /span 2 ;
+     grid-row: 2/ span 3 ;
+ }
+ .pics .pic9{
+     grid-column: 9 /span 2 ;
+     grid-row: 2/ span 3 ;
+ }
+ .pics .pic10{
+     grid-column: 2 /span 2 ;
+     grid-row: 3/ span 3 ;
+ }
+ .pics .pic11{
+     grid-column: 4 /span 2 ;
+     grid-row: 3/ span 3 ;
+ }
+ .pics .pic12{
+     grid-column: 6 /span 2 ;
+     grid-row: 3/ span 3 ;
+ }
+ .pics .pic13{
+     grid-column: 8 /span 2 ;
+     grid-row: 3/ span 3 ;
+ }
 .search-container{
     display: flex;
     gap: 10px;
@@ -90,7 +182,7 @@ transition-duration: 500ms;
     
     display: grid;
     max-height: 500px;
-    /* gap: 20px; */
+    gap: 20px;
     margin-top: 20px;
     grid-template-columns: 1fr  1fr  1fr  1fr  1fr;
     grid-template-rows: 40px 20px 40px 20px 80px 10px 40px 40px;
@@ -261,9 +353,22 @@ transition-duration: 500ms;
     margin-top: 20px;
     text-align: center;
 }
+.about{
+    height: 300px;
+    max-width: 100vw;
+    background-color: #e3e3e3;
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+} 
 .about-container{
     display: flex;
     gap: 20px;
+}
+
+.logo{
+    font-size: 35px; 
+    font-family: fantasy;
 }
 
 .aside img{

@@ -317,8 +317,11 @@ function onflexivleClick() {
         renderCanvas()
     };
     document.querySelector('.main-container').style.display = "none";
-    document.querySelector('.flexible').style.display = "none";
     document.querySelector('.meme-generator').style.display = "flex";
+    document.querySelector('.search-container').style.display = "none";
+    document.querySelector('.flexible').style.display = "none";
+    document.querySelector('.pages').style.display = "none";
+    document.querySelector('.about').style.display = 'none'
 }
 
 function onFilterkeyword(elKeyword) {
